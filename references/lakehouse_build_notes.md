@@ -68,3 +68,7 @@ The methodology prescribes three sequential modules:
 | 2026-10-26 | Sanitized Projection | Specified `silver.fct_sales_transactions` schema dropping `cardNumber` and keeping `paymentMethod`. | Project | Validado Tecnicamente |
 | 2026-10-26 | Financial Metrics | Formulated Gold measures in abstract units (`total_sales_revenue_units`) with documented price limits. | Project | Validado Tecnicamente |
 | 2026-10-26 | Assessment Completion | Sub-stage 03 and Module 1 (Assessment) completed and signed off. Cleared for Module 2: Preparation. | Methodology | Concluído |
+| 2026-10-26 | Shared Configuration | Built `notebooks/includes/configuration.py` with immutable parameters, table names, and PCI rules. | Project | Concluído |
+| 2026-10-26 | Common Utilities | Built `notebooks/includes/common_functions.py` with audit enrichment, Delta merge, and quality tests. | Project | Concluído |
+| 2026-10-26 | Preparation Guides | Established catalog DDLs, compute specs, and Medallion patterns in `02_preparation/`. | Project | Concluído |
+| 2026-10-26 | Preparation Completion | Module 2 (Preparation) completed and signed off. Cleared for Module 3: Execution. | Methodology | Concluído |
