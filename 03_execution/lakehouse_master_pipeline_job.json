@@ -1,0 +1,70 @@
+{
+  "name": "[Lakehouse Build] Medallion Master Pipeline",
+  "tags": {
+    "project": "lakehouse_build",
+    "methodology": "lakehouse_build",
+    "domain": "bakehouse_sales"
+  },
+  "format": "MULTI_TASK",
+  "max_concurrent_runs": 1,
+  "queue": {
+    "enabled": true
+  },
+  "tasks": [
+    {
+      "task_key": "01_bronze_ingestion",
+      "description": "Ingests raw transactions, customers, franchises, and suppliers from samples.bakehouse into lakehouse_build.bronze with standard audit metadata.",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/miguel.morandini@programmers.com.br/lakehouse-build/notebooks/01_bronze_ingestion",
+        "source": "WORKSPACE"
+      },
+      "run_if": "ALL_SUCCESS",
+      "timeout_seconds": 0
+    },
+    {
+      "task_key": "02_silver_curation",
+      "description": "Curates, conforms, and sanitizes data into Silver: dim_suppliers (with -1 fallback), dim_franchises, dim_customers, and fct_sales_transactions (PCI-DSS cardNumber purged, Liquid Clustered).",
+      "depends_on": [
+        {
+          "task_key": "01_bronze_ingestion"
+        }
+      ],
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/miguel.morandini@programmers.com.br/lakehouse-build/notebooks/02_silver_curation",
+        "source": "WORKSPACE"
+      },
+      "run_if": "ALL_SUCCESS",
+      "timeout_seconds": 0
+    },
+    {
+      "task_key": "03_gold_marts",
+      "description": "Builds Gold consumption marts: fct_daily_franchise_sales (daily store performance aggregated with Liquid Clustering) and fct_product_performance (product mix and velocity).",
+      "depends_on": [
+        {
+          "task_key": "02_silver_curation"
+        }
+      ],
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/miguel.morandini@programmers.com.br/lakehouse-build/notebooks/03_gold_marts",
+        "source": "WORKSPACE"
+      },
+      "run_if": "ALL_SUCCESS",
+      "timeout_seconds": 0
+    },
+    {
+      "task_key": "04_quality_validation",
+      "description": "Executes 24 automated quality test assertions covering Completeness, Primary Key Uniqueness, Referential Integrity, PCI-DSS compliance, and Volumetric Reconciliation across all layers.",
+      "depends_on": [
+        {
+          "task_key": "03_gold_marts"
+        }
+      ],
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/miguel.morandini@programmers.com.br/lakehouse-build/notebooks/04_quality_validation",
+        "source": "WORKSPACE"
+      },
+      "run_if": "ALL_SUCCESS",
+      "timeout_seconds": 0
+    }
+  ]
+}

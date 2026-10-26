@@ -83,6 +83,7 @@ def build_gold_fct_daily_franchise_sales(spark: SparkSession) -> int:
         gold_daily_df.write
         .format("delta")
         .mode("overwrite")
+        .option("overwriteSchema", "true")
         .clusterBy(*config.CLUSTERING_KEYS_GOLD_SALES)
         .saveAsTable(gold_table)
     )
@@ -139,6 +140,7 @@ def build_gold_fct_product_performance(spark: SparkSession) -> int:
         product_df.write
         .format("delta")
         .mode("overwrite")
+        .option("overwriteSchema", "true")
         .saveAsTable(gold_table)
     )
     

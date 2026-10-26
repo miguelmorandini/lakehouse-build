@@ -52,7 +52,7 @@ def sanitize_silver_transactions(df: DataFrame, prohibited_columns: List[str] = 
       - Drops prohibited PCI columns (such as `cardNumber`).
       - Derives `transaction_date` from `dateTime` for Liquid Clustering.
       - Renames camelCase source columns to snake_case target columns.
-      - Adds `_updated_at` timestamp.
+      - Retains clean business attributes and audit timestamps.
     """
     if prohibited_columns is None:
         prohibited_columns = ["cardNumber"]
@@ -73,6 +73,20 @@ def sanitize_silver_transactions(df: DataFrame, prohibited_columns: List[str] = 
         .withColumnRenamed("paymentMethod", "payment_method")
         .withColumn("transaction_date", F.to_date(F.col("transaction_datetime")))
         .withColumn("_updated_at", F.current_timestamp())
+        .select(
+            "transaction_id",
+            "customer_id",
+            "franchise_id",
+            "transaction_datetime",
+            "transaction_date",
+            "product_name",
+            "quantity",
+            "unit_price",
+            "total_price",
+            "payment_method",
+            "_ingested_at",
+            "_updated_at"
+        )
     )
 
 

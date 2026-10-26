@@ -174,6 +174,7 @@ def load_silver_fct_sales(spark: SparkSession) -> int:
         sanitized_tx.write
         .format("delta")
         .mode("overwrite")
+        .option("overwriteSchema", "true")
         .clusterBy(*config.CLUSTERING_KEYS_SILVER_SALES)
         .saveAsTable(silver_table)
     )
