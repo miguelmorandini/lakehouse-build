@@ -72,10 +72,8 @@ lakehouse_build/
 ## 4. Current Status & Next Steps
 
 1. **Current Status:**
-   - **Module 1 (Assessment) COMPLETED:** All three confirmed sub-stages (`01_use_case_definition_and_scope`, `02_workload_and_source_profiling`, `03_governance_readiness_and_design_decisions`) documented, profiled, validated, and approved.
-   - **Module 2 (Preparation) COMPLETED:**
-     - Environment and catalog readiness guide documented in [01_environment_and_catalog_readiness.md](file:///c:/Miguel/Projects/lakehouse-build/02_preparation/01_environment_and_catalog_readiness.md).
-     - Medallion ingestion and transformation patterns documented in [02_ingestion_and_transformation_patterns.md](file:///c:/Miguel/Projects/lakehouse-build/02_preparation/02_ingestion_and_transformation_patterns.md).
-     - Reusable configuration module built in [configuration.py](file:///c:/Miguel/Projects/lakehouse-build/notebooks/includes/configuration.py).
-     - Common PySpark & Delta Lake utility functions implemented in [common_functions.py](file:///c:/Miguel/Projects/lakehouse-build/notebooks/includes/common_functions.py).
-2. **Next Step:** Initiate **Module 3: Execution** — implement the Medallion layer pipelines starting with Bronze raw ingestion (`03_execution/01_bronze/`), followed by Silver curation (`03_execution/02_silver/`), Gold star schema modeling (`03_execution/03_gold/`), and end-to-end data quality testing (`03_execution/04_testing_and_validation/`).
+   - **Module 1 (Assessment) COMPLETED:** All three confirmed sub-stages documented, profiled, validated, and approved.
+   - **Module 2 (Preparation) COMPLETED:** Environment readiness, catalog schemas, common utilities ([common_functions.py](file:///c:/Miguel/Projects/lakehouse-build/notebooks/includes/common_functions.py)), and Medallion patterns established.
+   - **Module 3 (Execution) IN PROGRESS:**
+     - **Bronze Layer (`03_execution/01_bronze/`) COMPLETED:** Ingested 4 raw tables from `samples.bakehouse` into `lakehouse_build.bronze` with audit metadata and 100% row reconciliation ([README.md](file:///c:/Miguel/Projects/lakehouse-build/03_execution/01_bronze/README.md), [ingest_bronze.py](file:///c:/Miguel/Projects/lakehouse-build/03_execution/01_bronze/ingest_bronze.py)).
+2. **Next Step:** Implement **Silver Layer (`03_execution/02_silver/`)** — develop curation, conformance, surrogate keys, unknown supplier union (`supplier_key = -1`), and PCI sanitization (omitting `cardNumber`) via Delta `MERGE INTO`.
