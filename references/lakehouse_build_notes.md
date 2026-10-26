@@ -74,3 +74,4 @@ The methodology prescribes three sequential modules:
 | 2026-10-26 | Preparation Completion | Module 2 (Preparation) completed and signed off. Cleared for Module 3: Execution. | Methodology | Concluído |
 | 2026-10-26 | Target Catalog | Created managed catalog `lakehouse_build` with schemas `bronze`, `silver`, and `gold`. | Project | Concluído |
 | 2026-10-26 | Bronze Execution | Ingested all 4 tables into `lakehouse_build.bronze` with audit columns and 100% row reconciliation. | Project | Concluído |
+| 2026-10-26 | Silver Execution | Curated and conformed 4 Silver tables; dropped cardNumber, resolved 21 orphaned franchises with -1 fallback. | Project | Concluído |
