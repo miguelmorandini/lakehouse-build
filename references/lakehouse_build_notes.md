@@ -64,4 +64,7 @@ The methodology prescribes three sequential modules:
 | 2026-10-26 | Supplier Inclusion | Approved optional dimension via `LEFT JOIN` (no sales dropped). Validation pending for `-1` fallback rule. | Project | Decisão Aprovada |
 | 2026-10-26 | Card Data Removal | Approved dropping `cardNumber` from Silver/Gold entirely. Do not mask or log values. | Project | Decisão Aprovada |
 | 2026-10-26 | Monetary Unit | Approved abstract/unspecified units (no USD assumption). Document limitations before Gold measures. | Project | Decisão Aprovada |
-| 2026-10-26 | Sub-Stage 03 Status | `03_governance_readiness_and_design_decisions` is IN PROGRESS pending technical validations. | Methodology | Em Andamento |
+| 2026-10-26 | Supplier Fallback Rule | Formalized `supplier_key = -1` ('Unknown Supplier') to resolve 21 orphaned franchises. | Project | Validado Tecnicamente |
+| 2026-10-26 | Sanitized Projection | Specified `silver.fct_sales_transactions` schema dropping `cardNumber` and keeping `paymentMethod`. | Project | Validado Tecnicamente |
+| 2026-10-26 | Financial Metrics | Formulated Gold measures in abstract units (`total_sales_revenue_units`) with documented price limits. | Project | Validado Tecnicamente |
+| 2026-10-26 | Assessment Completion | Sub-stage 03 and Module 1 (Assessment) completed and signed off. Cleared for Module 2: Preparation. | Methodology | Concluído |

@@ -71,9 +71,9 @@ lakehouse_build/
 
 ## 4. Current Status & Next Steps
 
-1. **Current Status:** 
+1. **Current Status: Module 1 (Assessment) COMPLETED**
    - Sub-stage 1 (`01_use_case_definition_and_scope`) completed: charter documented in [use_case_charter.md](file:///c:/Miguel/Projects/lakehouse-build/01_assessment/01_use_case_definition_and_scope/use_case_charter.md).
    - Sub-stage 2 (`02_workload_and_source_profiling`) completed: empirical profiling report across 4 tables in `samples.bakehouse` documented in [source_workload_profiling_report.md](file:///c:/Miguel/Projects/lakehouse-build/01_assessment/02_workload_and_source_profiling/source_workload_profiling_report.md).
-   - Sub-stage 3 (`03_governance_readiness_and_design_decisions`) **IN PROGRESS**: architectural choices, classifications, and governance rules registered in [governance_and_design_decisions.md](file:///c:/Miguel/Projects/lakehouse-build/01_assessment/03_governance_readiness_and_design_decisions/governance_and_design_decisions.md). Sub-stage remains open until pending technical validations are formalized.
-2. **Immediate Step:** Execute and document the technical validations (cardinality/fallback rules for suppliers, Silver projection exclusion of `cardNumber`, and Gold measures naming with abstract currency units) to finalize Assessment.
-3. **Implementation Hold:** Pipeline development and notebook implementation remain blocked until all three Assessment sub-stages are completed and approved.
+   - Sub-stage 3 (`03_governance_readiness_and_design_decisions`) completed: formal decisions, technical validations (supplier fallback `-1`, `cardNumber` removal, abstract monetary units), and Medallion architecture specifications documented in [governance_and_design_decisions.md](file:///c:/Miguel/Projects/lakehouse-build/01_assessment/03_governance_readiness_and_design_decisions/governance_and_design_decisions.md).
+2. **Next Step:** Initiate **Module 2: Preparation** — setup environment configurations, schemas/namespaces, common includes/utilities in `notebooks/includes/`, and preparation workflows grounded in confirmed methodology notes.
+3. **Execution Block:** Ingestion pipelines and transformation notebooks in `03_execution/` remain blocked until the Preparation phase foundation is established.
